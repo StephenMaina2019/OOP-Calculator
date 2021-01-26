@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 class calculator:
     #getting input from the user
@@ -21,10 +22,13 @@ class calculator:
             self.result = eval(self.userInput)
         except ZeroDivisionError:
             self.entry.delete(0, END)
-            self.entry.insert(0, "Not a number")
+            messagebox.showwarning("Error", "Not a number")
         except SyntaxError:
             self.entry.delete(0, END)
-            self.entry.insert(0, "Input Error")
+            messagebox.showwarning("Error", "Input Error")
+        except NameError:
+            self.entry.delete(0, END)
+            messagebox.showwarning("Error", "Fuck you! Enter a number Bitch")
         else:
             self.entry.delete(0, END)
             self.entry.insert(0, self.result)
